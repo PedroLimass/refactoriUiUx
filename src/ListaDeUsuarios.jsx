@@ -146,7 +146,7 @@ const ListaDeUsuarios = () => {
         <div className="abrirModal" style={{ display: abrirPagou }}>
           <p className="texto-cabecalho-modal">Recibo de pagamento</p>
           <p>
-            O Pagamento <b>{abrirNaoRecebeu}</b> foi concluído com sucesso
+            O Pagamento <b>{abrirNaoRecebeu}</b> foi concluído com <strong>sucesso</strong>!
           </p>
           <button
             onClick={() => {
