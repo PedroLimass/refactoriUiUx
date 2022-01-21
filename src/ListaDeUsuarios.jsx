@@ -85,8 +85,9 @@ const valorInput = (event) => {
                     <div className="content">
                         <img className="thumbnail" src={item.img} alt="Foto do usuário" />
                         <div className="infos">   
-                            <p>Nome do Usuário: {item.name}</p>
-                            <p>ID: {item.id} - Username: {item.username}</p>
+                            <p><strong>ID:</strong> {item.id}</p>
+                            <p><strong>Nome do Usuário:</strong> {item.name}</p>
+                            <p>Username: {item.username}</p>
                         </div>
                         <button className="botao-pagar" onClick={()=>{abrirModalPagar(item.name)}}>Pagar</button>
                     </div>
