@@ -5,7 +5,7 @@ import logo from "../../Assets/logo.png";
 export const Header = () => {
   return (
     <div id="Container">
-      <img src={logo} />
+      <img src={logo} alt="logo"/>
     </div>
   );
 };
