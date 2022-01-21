@@ -8,14 +8,17 @@ body {
   background-color: #eadeda;
 }
 
+#main-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 30px 0;
+  text-align: center;
+}
+
 .container {
-  /* background-image: linear-gradient(#31324f, #1f202e); */
-  /* background-color: #1985a1; */
   background-color: #2e294e;
-  width: 960px;
   border-radius: 20px;
   margin: 18px auto;
-  /* margin-top: ; */
   align-items: center;
   padding: 1.25rem;
 }
@@ -90,11 +93,11 @@ button:hover {
   margin-top: 0%;
   align-content: center;
   font-weight: bold;
-  border-radius: 20px  20px 0px 0px;
+  border-radius: 20px 20px 0px 0px;
 }
 
 .texto-cabecalho-modal span {
-  color: #FFD400;
+  color: #ffd400;
   font-weight: bold;
 }
 
@@ -130,46 +133,53 @@ button:hover {
 
 /* Media Queries */
 
-@media screen and (max-width: 412px) and (min-width: 391px) {
-  .thumbnail {
-    width: 75px;
+@media screen and (max-width: 600px) {
+  .container {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
   }
 
-  .infos p {
-    font-size: 15px;
-  }
-}
+  .content {
+    max-width: 100%;
 
-@media screen and (max-width: 390px) and (min-width: 376px) {
-  .thumbnail {
-    width: 75px;
-  }
-
-  .infos p {
-    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
-@media screen and (max-width: 375px) and (min-width: 361px) {
-  .thumbnail {
-    width: 75px;
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  #main-container {
+    max-width: 90%;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-gap: 30px;
   }
 
-  .infos p {
-    font-size: 15px;
+  .content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
-@media screen and (max-width: 360px) and (min-width: 280px) {
-  .thumbnail {
-    width: 60px;
-  }
-
-  .infos p {
-    font-size: 10px;
+@media screen and (min-width: 1200px) {
+  #main-container {
+    max-width: 90%;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-gap: 30px;
   }
 
   button {
-    font-size: 10px;
+    margin-left: 25px;
+  }
+
+  .infos p {
+    text-align: left;
   }
 }
