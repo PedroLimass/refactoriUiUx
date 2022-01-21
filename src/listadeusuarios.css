@@ -1,0 +1,193 @@
+/* CSS da Lista de Usuários para Pagamento */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #eadeda;
+}
+
+#main-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.container {
+  background-color: #2e294e;
+  border-radius: 20px;
+  margin: 18px auto;
+  align-items: center;
+  padding: 1.25rem;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.thumbnail {
+  border-radius: 50%;
+  margin-right: 1.25rem;
+  border: solid 2px #fff;
+}
+
+.infos {
+  margin-right: auto;
+}
+
+.infos p {
+  font-size: 18px;
+  color: #fff;
+}
+
+button {
+  padding: 1.25rem 4.538rem;
+  border-radius: 100px;
+  border: none;
+  font-size: 15px;
+  color: white;
+  background-color: #d90368;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #fff;
+  border: 3px solid #d90368;
+  color: #d90368;
+}
+
+/* CSS dos Modals */
+
+.abrirModal {
+  display: flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  right: "auto";
+  bottom: "auto";
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 290px;
+  border-radius: 20px;
+  flex-direction: column;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.texto-cabecalho-modal {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: #820263;
+  color: #ffffff;
+  padding: 10px;
+  width: 95%;
+  margin-top: 0%;
+  align-content: center;
+  font-weight: bold;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.texto-cabecalho-modal span {
+  color: #ffd400;
+  font-weight: bold;
+}
+
+.abrirModal select {
+  width: 60%;
+  height: 30px;
+  border-radius: 10px;
+  color: black;
+  border: solid 1px black;
+}
+
+.abrirModal button {
+  margin-bottom: 10px;
+}
+
+.abrirModal p {
+  text-align: center;
+}
+
+.valorInput {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.valorInput input {
+  border-radius: 10px;
+  border: solid 1px black;
+  width: 60%;
+  height: 25px;
+}
+
+.valorInput p {
+  margin: 0;
+  color: red;
+  font-weight: bold;
+  margin-top: 2%;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 600px) {
+  .container {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content {
+    max-width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  #main-container {
+    max-width: 90%;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-gap: 30px;
+  }
+
+  .content {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #main-container {
+    max-width: 90%;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-gap: 30px;
+  }
+
+  button {
+    margin-left: 25px;
+  }
+
+  .infos p {
+    text-align: left;
+  }
+}
