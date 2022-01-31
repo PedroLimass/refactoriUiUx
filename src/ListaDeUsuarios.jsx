@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import NumberFormat from "react-number-format";
 import "./listadeusuarios.css";
 import axios from "axios";
+import { cards } from "./cards";
+import invert from "./utilFn";
 
 //Pegando as informações da API pelo GET
 const ListaDeUsuarios = () => {
@@ -17,20 +19,20 @@ const ListaDeUsuarios = () => {
   }, []);
 
   // Mock com lista de cartões para teste
-  const cards = [
-    // cartão válido
-    {
-      card_number: "1111111111111111",
-      cvv: 789,
-      expiry_date: "01/18",
-    },
-    // cartão inválido
-    {
-      card_number: "4111111111111234",
-      cvv: 123,
-      expiry_date: "01/20",
-    },
-  ];
+  // const cards = [
+  //   // cartão válido
+  //   {
+  //     card_number: "1111111111111111",
+  //     cvv: 789,
+  //     expiry_date: "01/18",
+  //   },
+  //   // cartão inválido
+  //   {
+  //     card_number: "4111111111111234",
+  //     cvv: 123,
+  //     expiry_date: "01/20",
+  //   },
+  // ];
 
   // Função para pegar a escolha do cartão do input select
   const escolhaDoCartao = (event) => {
@@ -38,17 +40,18 @@ const ListaDeUsuarios = () => {
   };
 
   // Ações dos modals
-  const [abrirPagamento, setAbrirPagamento] = useState("none"); // Para abrir modal de pagamento
+  const [abrirPagamento, setAbrirPagamento] = useState(false); // Para abrir modal de pagamento
   const [pegarUsuario, setPegarUsuario] = useState(""); // Para pegar o nome do usuário
   const [abrirPagou, setAbrirPagou] = useState("none"); // Para abrir modal com recibo de pagamento
   const [abrirNaoRecebeu, setAbrirNaoRecebeu] = useState(""); // Para msg de erro de pagamento
   const [valorCartao, setValorCartao] = useState("1"); // Para pegar o cartão escolhido para pagamento
   const [valorDinheiro, setValorDinheiro] = useState(""); // Para pegar o valor de pagamento digitado
   const [validarCampo, setValidarCampo] = useState("none"); // Para validar campo de valor digitado
+  const [teste, setTeste] = useState(false); // Para validar campo de valor digitado
 
   // Função para abrir o modal de pagamento do usuário
   const abrirModalPagar = (name) => {
-    setAbrirPagamento("flex");
+    setAbrirPagamento(invert(abrirPagamento));
     setPegarUsuario(name);
   };
 
@@ -61,8 +64,8 @@ const ListaDeUsuarios = () => {
         setAbrirNaoRecebeu("");
       } else {
         setAbrirNaoRecebeu("não");
-      }
-      setAbrirPagamento("none");
+      }      
+      setAbrirPagamento(invert(abrirPagamento));
       setAbrirPagou("flex");
       setValorDinheiro("");
       setValidarCampo("none");
@@ -78,6 +81,10 @@ const ListaDeUsuarios = () => {
   const valorInput = (event) => {
     setValorDinheiro(event.target.value);
     setValidarCampo("none");
+  };
+
+  const aff = () => {
+    setTeste(!teste);
   };
 
   // Renderizando na tela as informações recebidas da API
@@ -108,45 +115,58 @@ const ListaDeUsuarios = () => {
             </div>
           </div>
         ))}
+        <button
+          className="botao-pagar"
+          onClick={() => {
+            aff();
+          }}
+        >
+          teste
+        </button>
+
+        {teste ? <p>trueeeeeeeee</p> : <p>falksee</p>}
 
         {/*--------------------------------Abrir Modal de pagamento----------------------------------*/}
-        <div className="abrirModal" style={{ display: abrirPagamento }}>
-          <p className="texto-cabecalho-modal">
-            Pagamento para <span>{pegarUsuario}</span>
-          </p>
-          <div className="valorInput">
-            <NumberFormat
-              thousandSeparator={true}
-              value={valorDinheiro}
-              onChange={valorInput}
-              prefix={"R$ "}
-              inputmode="numeric"
-              placeholder="R$ 0,00"
-            />
-            <p style={{ display: validarCampo }}>Campo obrigatório</p>
+        {abrirPagamento ? (
+          <div className="abrirModal" style={{ display: abrirPagamento }}>
+            <p className="texto-cabecalho-modal">
+              Pagamento para <span>{pegarUsuario}</span>
+            </p>
+            <div className="valorInput">
+              <NumberFormat
+                thousandSeparator={true}
+                value={valorDinheiro}
+                onChange={valorInput}
+                prefix={"R$ "}
+                inputmode="numeric"
+                placeholder="R$ 0,00"
+              />
+              <p style={{ display: validarCampo }}>Campo obrigatório</p>
+            </div>
+            <select value={valorCartao} onChange={escolhaDoCartao}>
+              <option value="1">
+                Cartão com final {cards[0].card_number.substr(-4)}
+              </option>
+              <option value="2">
+                Cartão com final {cards[1].card_number.substr(-4)}
+              </option>
+            </select>
+            <button
+              onClick={() => {
+                abrirModalPagou();
+              }}
+            >
+              Pagar
+            </button>
           </div>
-          <select value={valorCartao} onChange={escolhaDoCartao}>
-            <option value="1">
-              Cartão com final {cards[0].card_number.substr(-4)}
-            </option>
-            <option value="2">
-              Cartão com final {cards[1].card_number.substr(-4)}
-            </option>
-          </select>
-          <button
-            onClick={() => {
-              abrirModalPagou();
-            }}
-          >
-            Pagar
-          </button>
-        </div>
+        ) : null}
 
         {/*------------------------------Abrir Modal de recibo de pagamento--------------------------------*/}
         <div className="abrirModal" style={{ display: abrirPagou }}>
           <p className="texto-cabecalho-modal">Recibo de pagamento</p>
           <p>
-            O Pagamento <b>{abrirNaoRecebeu}</b> foi concluído com <strong>sucesso</strong>!
+            O Pagamento <b>{abrirNaoRecebeu}</b> foi concluído com{" "}
+            <strong>sucesso</strong>!
           </p>
           <button
             onClick={() => {
