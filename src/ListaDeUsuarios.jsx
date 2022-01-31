@@ -64,7 +64,7 @@ const ListaDeUsuarios = () => {
         setAbrirNaoRecebeu("");
       } else {
         setAbrirNaoRecebeu("não");
-      }      
+      }
       setAbrirPagamento(invert(abrirPagamento));
       setAbrirPagou("flex");
       setValorDinheiro("");
@@ -83,10 +83,7 @@ const ListaDeUsuarios = () => {
     setValidarCampo("none");
   };
 
-  const aff = () => {
-    setTeste(!teste);
-  };
-
+  
   // Renderizando na tela as informações recebidas da API
   return (
     <>
@@ -115,16 +112,8 @@ const ListaDeUsuarios = () => {
             </div>
           </div>
         ))}
-        <button
-          className="botao-pagar"
-          onClick={() => {
-            aff();
-          }}
-        >
-          teste
-        </button>
 
-        {teste ? <p>trueeeeeeeee</p> : <p>falksee</p>}
+
 
         {/*--------------------------------Abrir Modal de pagamento----------------------------------*/}
         {abrirPagamento ? (
