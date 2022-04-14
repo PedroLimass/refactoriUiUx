@@ -4,6 +4,7 @@ import "./listadeusuarios.css";
 import axios from "axios";
 import { cards } from "./cards";
 import invert from "./utilFn";
+import { GrClose } from "react-icons/gr";
 
 //Pegando as informações da API pelo GET
 const ListaDeUsuarios = () => {
@@ -83,7 +84,6 @@ const ListaDeUsuarios = () => {
     setValidarCampo("none");
   };
 
-  
   // Renderizando na tela as informações recebidas da API
   return (
     <>
@@ -93,9 +93,6 @@ const ListaDeUsuarios = () => {
             <div className="content">
               <img className="thumbnail" src={item.img} alt="Foto do usuário" />
               <div className="infos">
-                <p>
-                  <strong>ID:</strong> {item.id}
-                </p>
                 <p>
                   <strong>Nome do Usuário:</strong> {item.name}
                 </p>
@@ -113,14 +110,21 @@ const ListaDeUsuarios = () => {
           </div>
         ))}
 
-
-
         {/*--------------------------------Abrir Modal de pagamento----------------------------------*/}
         {abrirPagamento ? (
           <div className="abrirModal" style={{ display: abrirPagamento }}>
-            <p className="texto-cabecalho-modal">
-              Pagamento para <span>{pegarUsuario}</span>
-            </p>
+            <div className="cabecalho-modal">
+              <p className="texto-cabecalho-modal">
+                Pagamento para <span>{pegarUsuario}</span>
+                <GrClose
+                  style={{ stroke: "blue" }}
+                  className="CloseBtn"
+                  onClick={() => {
+                    setAbrirPagamento(false);
+                  }}
+                />
+              </p>
+            </div>
             <div className="valorInput">
               <NumberFormat
                 thousandSeparator={true}

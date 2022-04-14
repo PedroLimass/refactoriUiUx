@@ -58,7 +58,6 @@ button {
 
 button:hover {
   background-color: #fff;
-  border: 3px solid #d90368;
   color: #d90368;
 }
 
@@ -101,6 +100,13 @@ button:hover {
   font-weight: bold;
 }
 
+.texto-cabecalho-modal svg {
+  position: sticky;
+  float: right;
+  padding-right: 5%;
+  padding-top: 5px;
+}
+
 .abrirModal select {
   width: 60%;
   height: 30px;
@@ -139,6 +145,11 @@ button:hover {
   margin-top: 2%;
 }
 
+.CloseBtn path {
+  stroke: white;
+  cursor: pointer;
+}
+
 /* Media Queries */
 
 @media screen and (max-width: 600px) {
@@ -173,6 +184,10 @@ button:hover {
     justify-content: space-between;
     align-items: center;
   }
+}
+
+.cabecalho-modal {
+  width: inherit;
 }
 
 @media screen and (min-width: 1200px) {
