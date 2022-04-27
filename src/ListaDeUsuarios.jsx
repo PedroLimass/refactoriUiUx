@@ -19,22 +19,6 @@ const ListaDeUsuarios = () => {
       });
   }, []);
 
-  // Mock com lista de cartões para teste
-  // const cards = [
-  //   // cartão válido
-  //   {
-  //     card_number: "1111111111111111",
-  //     cvv: 789,
-  //     expiry_date: "01/18",
-  //   },
-  //   // cartão inválido
-  //   {
-  //     card_number: "4111111111111234",
-  //     cvv: 123,
-  //     expiry_date: "01/20",
-  //   },
-  // ];
-
   // Função para pegar a escolha do cartão do input select
   const escolhaDoCartao = (event) => {
     setValorCartao(event.target.value);
@@ -100,6 +84,7 @@ const ListaDeUsuarios = () => {
               </div>
               <button
                 className="botao-pagar"
+                data-testid="btn-paymente"
                 onClick={() => {
                   abrirModalPagar(item.name);
                 }}
@@ -114,11 +99,15 @@ const ListaDeUsuarios = () => {
         {abrirPagamento ? (
           <div className="abrirModal" style={{ display: abrirPagamento }}>
             <div className="cabecalho-modal">
-              <p className="texto-cabecalho-modal">
+              <p
+                className="texto-cabecalho-modal"
+                data-testid="header-modal-text"
+              >
                 Pagamento para <span>{pegarUsuario}</span>
                 <GrClose
                   style={{ stroke: "blue" }}
                   className="CloseBtn"
+                  data-testid="btn-close"
                   onClick={() => {
                     setAbrirPagamento(false);
                   }}
@@ -130,8 +119,9 @@ const ListaDeUsuarios = () => {
                 thousandSeparator={true}
                 value={valorDinheiro}
                 onChange={valorInput}
+                data-testid="input-payment"
                 prefix={"R$ "}
-                inputmode="numeric"
+                inputMode="numeric"
                 placeholder="R$ 0,00"
               />
               <p style={{ display: validarCampo }}>Campo obrigatório</p>
@@ -148,6 +138,7 @@ const ListaDeUsuarios = () => {
               onClick={() => {
                 abrirModalPagou();
               }}
+              data-testid="btn-pagar"
             >
               Pagar
             </button>

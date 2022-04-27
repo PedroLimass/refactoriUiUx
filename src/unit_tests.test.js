@@ -1,4 +1,4 @@
-const invert = require("../src/utilFn");
+const invert = require("./utilFn");
 
 test("Testing invert return", () => {
   expect(invert(true)).toBe(false);
@@ -29,9 +29,3 @@ test("atribuição de objeto", () => {
   });
 });
 
-// test('numeric ranges', () => {  
-//   expect({apples: 6, bananas: 3}).toEqual({
-//     apples: toBeWithinRange(1, 10),
-//     bananas: toBeWithinRange(1, 20),
-//   });
-// });

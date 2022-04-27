@@ -2,6 +2,7 @@
   "name": "meu-primeiro-app",
   "version": "0.1.0",
   "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.17.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -19,9 +20,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest __tests__/",
-    "test:watch": "jest --watch __tests__/",
-    "test:coverage": "jest --coverage __tests__/",
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen --watchAll=false",
+    "test:coverage": "react-scripts test --env=jest-environment-jsdom-sixteen --watchAll=true --coverage",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
@@ -43,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^11.2.7",
+    "jest-environment-jsdom-sixteen": "^2.0.0"
   }
 }
